@@ -8,6 +8,7 @@ export default async function(state) {
     view.render(state.filter.params);
     //make query to server
     await state.filter.getResults();
+	state.results = state.filter.result;
     view.changeButtonText(state.filter.result.length);
     //listen to events in the form
     const form = document.getElementById("filterForm");
@@ -24,9 +25,8 @@ export default async function(state) {
     })
     form.addEventListener('submit', async function(e) {
         e.preventDefault();
-        state.filter.query = view.getInput();
         await state.filter.getResults();
-        view.changeButtonText(state.filter.result.length);
-        state.emitter.emit('event:renderListing', {})
+        state.results = state.filter.result;
+        state.emitter.emit('event:render-listing', {});
     })
 }
