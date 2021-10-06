@@ -7,7 +7,7 @@ export function render() {
 }
 export function renderCard(object) {
     const markup = `  <article class="col-md-4">
-    <a href="object.html" class="card">
+    <a href="#/item/${object.id}" class="card">
         <div class="card__header">
             <div class="card__title">
                 ${object.complex_name}

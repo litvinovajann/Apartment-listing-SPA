@@ -1,6 +1,4 @@
-export default function singleItemPage(){
-    const markup = '<h1>Item</h1>'
-    document.querySelector('#app').insertAdjacentHTML(
-        'afterbegin', markup
-    )
+import singleItem from './singleItem/singleItemController';
+export default function singleItemPage(state){
+    singleItem(state);
 }
