@@ -1,9 +1,10 @@
-import SingleItem from './singleItemModel';
-import * as view from './singleItemView'
-export default function(state) {
-    document.querySelector('#app').innerHTML = '';
+import SingleItem from './singleItemModel.js';
+import * as view from './singleItemView.js';
+
+export default async function (state){
+    // Создаем новый объект singleItem
     state.singleItem = new SingleItem(state.routeParams);
-    state.singleItem.getItem();
+    // Получаем данные с сервера
+    await state.singleItem.getItem();   // Отрисовываем разметку для отдельного объекта
     view.render(state.singleItem.result);
-    console.log(state.singleItem)
 }
